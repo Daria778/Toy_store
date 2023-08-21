@@ -25,7 +25,19 @@ public class Console implements View {
         work = false;
     }
     public void addToy() {
-
+        System.out.println("Enter the name of the toy:");
+        String ans = scanner.nextLine();
+        presenter.addToy(ans);
+    }
+    public void getToy(){
+        System.out.println("Enter the name of the toy, you want to receive:");
+        String ans = scanner.nextLine();
+        presenter.getToy(ans);
+    }
+    public void deleteToy(){
+        System.out.println("Enter the name of the toy, you want to delete:");
+        String ans = scanner.nextLine();
+        presenter.deleteToy(ans);
     }
     //TODO добавить возможность войти в уже существующий аккаунт, если такие данные имеются в файловой системе.
     public void enterOrRegister(){
@@ -39,11 +51,11 @@ public class Console implements View {
         String password = scanner.nextLine();
 
         if(presenter.daria(name, surname, password)){
-            menu.aAdminMenu();
+            //menu.aAdminMenu();
         }
         else {
             presenter.addHuman(name, surname, password);
-            menu.simpleMenu();
+            //menu.simpleMenu();
         }
     }
 

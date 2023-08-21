@@ -3,18 +3,20 @@ package Model.Service;
 import Model.FileSystem.FileHandler;
 import Model.FileSystem.Workable;
 import Model.Human.Human;
+import Model.Toys.Showcase;
+import Model.Toys.Toy;
 
 import java.io.IOException;
 
 public class Service {
     private Workable file;
     private Human h;
-    private ServiceAdmin serviceAdmin;
-    private ServiceHuman serviceHuman;
+    private Showcase showcase;
+
+
     public Service() {
-        this.file = new FileHandler();
-        this.serviceAdmin = new ServiceAdmin();
-        this.serviceHuman = new ServiceHuman();
+        this.file = new FileHandler<>();
+        this.showcase = new Showcase();
     }
     public void addHuman(String name, String surname, String password){
         h = new Human(name, surname, password);
@@ -32,11 +34,21 @@ public class Service {
         return false;
     }
 
-   public void addToy(){
-        serviceAdmin.addToy();
+   public void addToy(String name){
+        Toy toy = new Toy(name);
+        showcase.add(toy);
    }
-   public void getToy(){
-        serviceHuman.getToy();
+   public void getToy(String name){
+        showcase.chooseToy(name);
+        Toy tmp = showcase.get();
+       try {
+           file.fileWD(tmp, "toys.txt");
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
+   }
+   public void deleteToy(String name){
+        showcase.delete(name);
    }
 
 }

@@ -1,8 +1,6 @@
 package Presenter;
 
 import Model.Service.Service;
-import Model.Service.ServiceAdmin;
-import Model.Service.ServiceHuman;
 import View.View;
 
 public class Presenter {
@@ -13,9 +11,15 @@ public class Presenter {
         this.view = view;
         this.service = new Service();
     }
-//    public void addToy(String name) {
-//        serviceAd.addToy();
-//    }
+    public void addToy(String name) {
+        service.addToy(name);
+    }
+    public void getToy(String name){
+        service.getToy(name);
+    }
+    public void deleteToy(String name){
+        service.deleteToy(name);
+    }
 
    public void addHuman(String name, String surname, String password){
             service.addHuman(name, surname, password);
@@ -26,4 +30,5 @@ public class Presenter {
         }
         return false;
    }
+
 }

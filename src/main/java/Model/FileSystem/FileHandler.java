@@ -4,11 +4,11 @@ import Model.Human.Human;
 
 import java.io.*;
 
-public class FileHandler implements Workable{
+public class FileHandler<E> implements Workable<E>{
     @Override
-    public void fileWD(Human h, String path) {
+    public void fileWD(E h, String path) {
         File file = new File(path);
-        try (FileWriter writer = new FileWriter(file)) {
+        try (FileWriter writer = new FileWriter(file, true)) {
             writer.write(h.toString() + "\n");
             writer.flush();
         } catch (IOException e) {
