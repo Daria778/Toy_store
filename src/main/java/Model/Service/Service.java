@@ -28,10 +28,10 @@ public class Service {
     }
 
     public boolean daria(String name, String surname, String password){
-        if (name.equals("Daria") & surname.equals("Skatova") & password.equals("trustNo1")){
-            return true;
-        }
-        return false;
+        return name.equals("Daria") & surname.equals("Skatova") & password.equals("trustNo1");
+    }
+    public String showToys(){
+        return showcase.showToys();
     }
 
    public void addToy(String name){

@@ -10,6 +10,7 @@ public class AdminMenu {
     private List<MainAdmin> itemList;
     public AdminMenu(Console console) {
         itemList = new ArrayList<>();
+        itemList.add(new ShowToys((console)));
         itemList.add(new AddToy(console));
         itemList.add(new GetToy((console)));
         itemList.add(new DeleteToy((console)));

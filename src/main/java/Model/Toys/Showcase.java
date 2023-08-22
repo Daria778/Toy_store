@@ -38,6 +38,15 @@ public class Showcase {
             }
         }
     }
+    public String showToys() {
+        StringBuilder lol = new StringBuilder();
+        lol.append("There are toys:\n");
+        for (Toy toy : toys) {
+            lol.append(toy);
+            lol.append("\n");
+        }
+        return lol.toString();
+    }
 
     public int getToysSize() {
         return toys.size();

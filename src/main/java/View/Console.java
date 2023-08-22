@@ -33,6 +33,9 @@ public class Console implements View {
         System.out.println("GoodBye!");
         work = false;
     }
+    public void showToys(){
+        System.out.println(presenter.showToys());
+    }
     public void addToy() {
         System.out.println("Enter the name of the toy:");
         String ans = scanner.nextLine();
@@ -48,7 +51,7 @@ public class Console implements View {
         String ans = scanner.nextLine();
         presenter.deleteToy(ans);
     }
-    //TODO добавить возможность войти в уже существующий аккаунт, если такие данные имеются в файловой системе.
+
     public void enterOrRegister(){
         System.out.println("To purchase a toy, you should enter or register.");
 
@@ -60,11 +63,23 @@ public class Console implements View {
         String password = scanner.nextLine();
 
         if(presenter.daria(name, surname, password)){
-            admin.menu();
+            System.out.println("You have been entered as Admin");
+            while(work){
+                System.out.println(admin.menu());
+                String option = scanner.nextLine();
+                int numOp = Integer.parseInt(option);
+                admin.execute(numOp);
+            }
         }
         else {
             presenter.addHuman(name, surname, password);
-            simple.menu();
+            System.out.println("You have been entered as guest");
+            while(work){
+                System.out.println(simple.menu());
+                String option = scanner.nextLine();
+                int numOp = Integer.parseInt(option);
+                simple.execute(numOp);
+            }
         }
     }
 
