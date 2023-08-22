@@ -1,6 +1,6 @@
 package View.Menu.SimpleMenu;
 import View.Console;
-import View.Menu.AdminMenu.MainAdmin;
+
 
 public class GetToy extends MainSimple {
 
