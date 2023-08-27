@@ -20,6 +20,9 @@ public class Presenter {
     public void deleteToy(String name){
         service.deleteToy(name);
     }
+    public void save(){
+        service.save();
+    }
 
    public void addHuman(String name, String surname, String password){
             service.addHuman(name, surname, password);
@@ -27,6 +30,9 @@ public class Presenter {
    public String showToys(){
         return service.showToys();
    }
+   public void showYourToys(){
+        service.showYourToys();
+    }
    public boolean daria(String name, String surname, String password){
         if (service.daria(name, surname, password)){
             return true;

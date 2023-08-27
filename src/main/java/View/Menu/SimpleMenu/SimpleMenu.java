@@ -11,8 +11,8 @@ public class SimpleMenu {
         itemList = new ArrayList<>();
         itemList.add(new ShowToys((console)));
         itemList.add(new GetToy(console));
+        itemList.add(new ShowYourToys(console));
         itemList.add(new Finish((console)));
-
     }
     public String menu(){
         StringBuilder stringBuilder = new StringBuilder();

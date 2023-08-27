@@ -36,10 +36,16 @@ public class Console implements View {
     public void showToys(){
         System.out.println(presenter.showToys());
     }
+    public void showYourToys(){
+        presenter.showYourToys();
+    }
     public void addToy() {
         System.out.println("Enter the name of the toy:");
         String ans = scanner.nextLine();
         presenter.addToy(ans);
+    }
+    public void save(){
+        presenter.save();
     }
     public void getToy(){
         System.out.println("Enter the name of the toy, you want to receive:");
@@ -63,7 +69,7 @@ public class Console implements View {
         String password = scanner.nextLine();
 
         if(presenter.daria(name, surname, password)){
-            System.out.println("You have been entered as Admin");
+            System.out.printf("%s, you have been entered as Admin\n", name);
             while(work){
                 System.out.println(admin.menu());
                 String option = scanner.nextLine();
@@ -73,7 +79,7 @@ public class Console implements View {
         }
         else {
             presenter.addHuman(name, surname, password);
-            System.out.println("You have been entered as guest");
+            System.out.printf("%s, you have been entered as guest\n", name);
             while(work){
                 System.out.println(simple.menu());
                 String option = scanner.nextLine();

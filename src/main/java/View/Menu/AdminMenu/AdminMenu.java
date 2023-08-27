@@ -12,7 +12,9 @@ public class AdminMenu {
         itemList = new ArrayList<>();
         itemList.add(new ShowToys((console)));
         itemList.add(new AddToy(console));
+        itemList.add(new Save(console));
         itemList.add(new GetToy((console)));
+        itemList.add(new ShowYourToys(console));
         itemList.add(new DeleteToy((console)));
         itemList.add(new Finish((console)));
 

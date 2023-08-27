@@ -1,29 +1,30 @@
 package Model.Toys;
 
 
-public class Toy {
+import java.io.Serializable;
+
+public class Toy implements Serializable {
 
 private int id;
 private String name;
 private int number;
 private int rate;
-private Showcase toys;
 
 
 
     public Toy(String name) {
-        toys = new Showcase();
-        this.id = toys.getToysSize()+1;
+        this.id = Showcase.toys.size()+1;
         this.name = name;
         this.rate = rand(100);
         this.number = rand(10);
     }
 
+    public void setNumber() {
+        this.number = this.number - 1;
+    }
+
     public int getNumber() {
-        if (number > 0){
-            return number-1;
-        }
-        return 0;
+        return number;
     }
 
     public String getName() {
@@ -37,7 +38,7 @@ private Showcase toys;
 
     @Override
     public String toString() {
-        return id + " " + name + " " + rate + "%" + ", " +  "there are/is" + number + "toys";
+        return id + " " + name + " " + rate + "%, " + "there are/is " + number + " toys";
 
     }
 }
