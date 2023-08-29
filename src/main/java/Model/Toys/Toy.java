@@ -9,11 +9,13 @@ private int id;
 private String name;
 private int number;
 private int rate;
+private Showcase showcase = new Showcase();
+
 
 
 
     public Toy(String name) {
-        this.id = Showcase.toys.size()+1;
+        this.id = showcase.toys.size()+1;
         this.name = name;
         this.rate = rand(100);
         this.number = rand(10);

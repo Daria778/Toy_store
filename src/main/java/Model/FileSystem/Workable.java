@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface Workable<E> {
     void fileWD(E h, String path) throws IOException;
-    void fileWDToys(List<Toy> toys) throws IOException;
+    void fileWDToys(Showcase t) throws IOException;
     void fileR(String path) throws IOException, ClassNotFoundException;
-    List<?> fileRToys() throws IOException, ClassNotFoundException;
+    Showcase fileRToys() throws IOException, ClassNotFoundException;
 
 
 }

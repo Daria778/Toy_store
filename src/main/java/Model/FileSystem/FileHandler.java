@@ -1,24 +1,10 @@
 package Model.FileSystem;
 
 import Model.Toys.Showcase;
-import Model.Toys.Toy;
-
 import java.io.*;
-import java.util.List;
+
 
 public class FileHandler<E> implements Workable<E>, Serializable{
-    private FileOutputStream fileOutputStream;
-    private ObjectOutputStream objectOutputStream;
-    private FileInputStream fileInputStream;
-    private ObjectInputStream objectInputStream;
-    private List<Toy> toys;
-
-    public FileHandler() throws IOException {
-        this.fileOutputStream = new FileOutputStream("Toys.txt");
-        this.objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        this.fileInputStream = new FileInputStream("Toys.txt");
-        this.objectInputStream = new ObjectInputStream(fileInputStream);
-    }
 
     @Override
     public void fileWD(E h, String path) {
@@ -32,19 +18,52 @@ public class FileHandler<E> implements Workable<E>, Serializable{
     }
 
     @Override
-    public void fileWDToys(List<Toy> toys) throws IOException {
-        objectOutputStream.writeObject(toys);
-        objectOutputStream.close();
+    public void fileWDToys(Showcase toy) throws IOException {
+        boolean flag = false;
+
+        File file = new File("toys.data");
+        ObjectOutputStream oos = null;
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            if (fos!= null) {
+                oos = new ObjectOutputStream(fos);
+                oos.writeObject(toy);
+                flag = true;
+                System.out.println(toy.size());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (oos != null){
+                oos.close();
+            }
+        }
     }
 
     @Override
-    public List<?> fileRToys() throws IOException, ClassNotFoundException {
-        List<?> toyList =  (List<?>)objectInputStream.readObject();
-        objectInputStream.close();
-        return toyList;
-    }
+    public Showcase fileRToys() {
+        File file = new File("toys.data");
+        ObjectInputStream ois = null;
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            if (fis!= null) {
+                ois = new ObjectInputStream(fis);
+                Showcase toy = (Showcase) ois.readObject();
+                return toy;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                ois.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+            throw new RuntimeException("failed");
+        }
 
-    @Override
+        @Override
     public void fileR(String path) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             String line = bufferedReader.readLine();
