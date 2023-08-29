@@ -4,18 +4,15 @@ package Model.Toys;
 import java.io.Serializable;
 
 public class Toy implements Serializable {
-
-private int id;
 private String name;
 private int number;
 private int rate;
-private Showcase showcase = new Showcase();
+
 
 
 
 
     public Toy(String name) {
-        this.id = showcase.toys.size()+1;
         this.name = name;
         this.rate = rand(100);
         this.number = rand(10);
@@ -40,7 +37,7 @@ private Showcase showcase = new Showcase();
 
     @Override
     public String toString() {
-        return id + " " + name + " " + rate + "%, " + "there are/is " + number + " toys";
+        return name + " " + rate + "%, " + "there are/is " + number + " toys";
 
     }
 }

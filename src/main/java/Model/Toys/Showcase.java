@@ -26,7 +26,6 @@ public class Showcase implements Serializable {
 
     public void add(Toy toy){
         toys.add(toy);
-
     }
 
     public void delete(String name){
@@ -41,8 +40,10 @@ public class Showcase implements Serializable {
         }
         else{
             lol.append("There are toys:\n");
-            for (Toy toy : toys) {
-                lol.append(toy);
+            for (int i = 0; i < toys.size(); i++) {
+                lol.append(i);
+                lol.append(". ");
+                lol.append(toys.get(i));
                 lol.append("\n");
             }
 

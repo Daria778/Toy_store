@@ -13,8 +13,17 @@ public class Queue {
         queue.add(toy);
     }
     public String get(){
-        Toy tmp = queue.get(0);
-        tmp.setNumber();
-        return tmp.getName();
+        if (queue.isEmpty()){
+            System.out.println("There are no such a toy");
+        }
+        else{
+            Toy tmp = queue.get(0);
+            tmp.setNumber();
+            return tmp.getName();
+        }
+        return "false";
+    }
+    public void delete(){
+        queue.remove(0);
     }
 }

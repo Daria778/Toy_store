@@ -52,12 +52,14 @@ public class FileHandler<E> implements Workable<E>, Serializable{
                 return toy;
             }
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Something is wrong");
         } finally {
             try {
                 ois.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (IOException e ) {
+                System.out.println("Something is wrong");
+            } catch (NullPointerException e){
+                System.out.println("There are no toys");
             }
         }
             throw new RuntimeException("failed");

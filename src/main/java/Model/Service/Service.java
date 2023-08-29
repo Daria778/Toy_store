@@ -65,16 +65,19 @@ public class Service {
            throw new RuntimeException(e);
        }
    }
-    public void chooseToy(String name){
+    public Toy chooseToy(String name){
+        Toy toy = null;
         for (Toy l:showcase.getToys()) {
             if (l.getName().equals(name) & l.getNumber() > 0){
-                queue.add(l);
+                toy = l;
             }
-
         }
+        if (toy != null){
+            return toy;
+        }
+        throw new RuntimeException("There is no such a toy");
     }
-   public void getToy(String name){
-        chooseToy(name);
+   public void getToy(){
         String tmp = queue.get();
        try {
            file.fileWD(tmp, "YourToys.txt");
@@ -82,6 +85,7 @@ public class Service {
        } catch (IOException e) {
            throw new RuntimeException(e);
        }
+       queue.delete();
    }
    public void deleteToy(String name){
         showcase.delete(name);
