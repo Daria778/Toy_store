@@ -45,6 +45,19 @@ public class Service {
         }
         return showcase.showToys();
     }
+    public String showToysLeft(){
+        try {
+            file.fileWDToys(showcase);
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+        try{
+            showcase = file.fileRToys();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return showcase.showToys();
+    }
     public void showYourToys(){
         try {
             file.fileR("YourToys.txt");
@@ -65,27 +78,30 @@ public class Service {
            throw new RuntimeException(e);
        }
    }
-    public Toy chooseToy(String name){
-        Toy toy = null;
-        for (Toy l:showcase.getToys()) {
-            if (l.getName().equals(name) & l.getNumber() > 0){
-                toy = l;
+    public void chooseToy(String name){
+        try {
+            showcase = file.fileRToys();
+            for (Toy l:showcase.getToys()) {
+                if (l.getName().equals(name) & l.getNumber() > 0){
+                    queue.add(l);
+                }
             }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        if (toy != null){
-            return toy;
-        }
-        throw new RuntimeException("There is no such a toy");
+
     }
    public void getToy(){
+
         String tmp = queue.get();
        try {
            file.fileWD(tmp, "YourToys.txt");
            System.out.println("You have got a toy!");
+           queue.delete();
        } catch (IOException e) {
            throw new RuntimeException(e);
        }
-       queue.delete();
+
    }
    public void deleteToy(String name){
         showcase.delete(name);

@@ -14,8 +14,11 @@ public class Presenter {
     public void addToy(String name) {
         service.addToy(name);
     }
-    public void getToy(String name){
-        service.getToy(name);
+    public void chooseToy(String name){
+        service.chooseToy(name);
+    }
+    public void getToy(){
+        service.getToy();
     }
     public void deleteToy(String name){
         service.deleteToy(name);
@@ -29,6 +32,9 @@ public class Presenter {
    }
    public String showToys(){
         return service.showToys();
+   }
+   public String showToysLeft(){
+        return service.showToysLeft();
    }
    public void showYourToys(){
         service.showYourToys();

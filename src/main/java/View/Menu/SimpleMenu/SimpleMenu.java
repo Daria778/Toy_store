@@ -10,8 +10,10 @@ public class SimpleMenu {
     public SimpleMenu(Console console) {
         itemList = new ArrayList<>();
         itemList.add(new ShowToys((console)));
+        itemList.add(new ChooseToy(console));
         itemList.add(new GetToy(console));
         itemList.add(new ShowYourToys(console));
+        itemList.add(new ShowToysLeft(console));
         itemList.add(new Finish((console)));
     }
     public String menu(){
